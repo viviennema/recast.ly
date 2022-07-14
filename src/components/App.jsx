@@ -30,10 +30,14 @@ class App extends React.Component {
   }
 
   onTitleClick(event) {
-    console.log(event);
-    // this.setState({
-    //   videoPlaying: videosArray[1]
-    // });
+    for (var i = 0; i < videosArray.length; i++) {
+      if ((event.target.innerText) === videosArray[i].snippet.title) {
+        this.setState({
+          videoPlaying: videosArray[i]
+        });
+
+      }
+    }
   }
 
 
