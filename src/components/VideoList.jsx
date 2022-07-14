@@ -1,6 +1,7 @@
 // console.log('HEY');
-import videosArray from '../data/exampleVideoData.js';
+//import videosArray from '../data/exampleVideoData.js';
 import VideoListEntry from './VideoListEntry.js';
+//console.log(videosArray);
 
 
 // var VideoList = (props) => (
@@ -22,7 +23,7 @@ import VideoListEntry from './VideoListEntry.js';
 
 var VideoList = (props) => (
   <div className="video-list">
-    {props.exampleVideoData.map((video) =>
+    {props.videos.map((video) =>
       <VideoListEntry video={video} />)}
   </div>
 );
