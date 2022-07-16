@@ -9,9 +9,18 @@ var searchYouTube = (query, callback) => {
     url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
     type: 'GET',
     data: {'q': query},
-    contentType: 'application/json',
     success: callback
   });
 };
 
+// const videoObj = {};
+
+// var videosArray2 = searchYouTube('', data => {
+//   if (videoObj['array'] === undefined) {
+//     videoObj['array'] = data;
+//   }
+// } );
+
+
 export default searchYouTube;
+
