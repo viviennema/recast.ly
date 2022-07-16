@@ -2,6 +2,7 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import searchYouTube from '../lib/searchYouTube.js';
+import Search from './Search.js';
 
 
 
@@ -11,9 +12,8 @@ class App extends React.Component {
     this.state = {
       videosArray: [],
       videoPlaying: {},
-      query: 'Hack Reactor'
+      query: 'Hack Reactor',
     };
-    console.log('CONSTRUCTOR');
   }
 
   componentDidMount() {
@@ -23,7 +23,15 @@ class App extends React.Component {
         videosArray: data
       });
     });
-    console.log('COMPONENTDIDMOUNT');
+  }
+
+  search(string) {
+    searchYouTube(string, (data) => {
+      this.setState({
+        videoPlaying: data[0],
+        videosArray: data
+      });
+    });
   }
 
   onTitleClick(event) {
@@ -32,10 +40,29 @@ class App extends React.Component {
         this.setState({
           videoPlaying: this.state.videosArray[i]
         });
-
       }
     }
   }
+
+  // onQueryChange(event) {
+  //   console.log(event.target.innerText);
+  //   if (event.target.innerText !== '' && event.target.innerText !== this.state.query) {
+  //     this.setState({
+  //       query: event.target.innerText
+  //     });
+  //     searchYouTube(event.target.innerText, (data) => {
+  //       this.setState({
+  //         videoPlaying: data[0],
+  //         videoArray: data
+  //       });
+  //     });
+  //   }
+  // }
+
+  // onButtonClick(event) {
+  //   console.log(event);
+
+  // }
 
 
   render () {
@@ -44,7 +71,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <Search search={this.search.bind(this)}/>
           </div>
         </nav>
         <div className="row">
